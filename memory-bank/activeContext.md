@@ -4,19 +4,19 @@
 
 Rexプロジェクトは現在、初期セットアップフェーズにあります。スプリント1では以下のゴールに焦点を当てています：
 
-1. composerで必要なライブラリを追加する
-2. PHP、Nginx、DBのDockerコンテナを作成し、ping-pong APIを実行できる状態にする
-3. 企業のサインアップ機能の実装
+1. ✅ composerで必要なライブラリを追加する
+2. ✅ PHP、Nginx、DBのDockerコンテナを作成し、ping-pong APIを実行できる状態にする
+3. ✅ 企業のサインアップ機能の実装
 4. 企業のサインイン機能の実装
 5. 企業のサインアウト機能の実装
 
 ### Current Priorities
 1. 企業関連の認証機能を実装する
-   - サインアップ
+   - ✅ サインアップ
    - サインイン
    - サインアウト
-2. クリーンアーキテクチャのディレクトリ構造を拡張する
-3. データベースマイグレーションを実装する
+2. ✅ クリーンアーキテクチャのディレクトリ構造を拡張する
+3. ✅ データベースマイグレーションを実装する
 
 ## Recent Changes
 
@@ -44,13 +44,37 @@ Docker環境を構築するために以下のファイルを作成しました�
 - **app/Presentation/Api/Ping/PingController.php**: Ping-Pong APIコントローラー
 - **routes/api/ping.php**: Ping-Pong APIルート
 
+企業のサインアップ機能を実装しました：
+- **Domain Layer**:
+  - **ValueObjects**: Email, Password, CompanyName, CompanyId
+  - **Entities**: Company
+  - **RepositoryInterfaces**: CompanyRepositoryInterface
+- **Application Layer**:
+  - **UseCases**: CompanySignUpUseCase, CompanySignUpUseCaseInput, CompanySignUpUseCaseOutput
+- **Infrastructure Layer**:
+  - **Models**: CompanyModel
+  - **Repositories**: CompanyRepository
+- **Presentation Layer**:
+  - **API**: CompanySignUpController, CompanySignUpRequest, CompanySignUpResponder
+- **Framework Layer**:
+  - **ServiceProviders**: CompanyServiceProvider
+- **Database**:
+  - **Migrations**: create_companies_table
+- **Routes**:
+  - **API**: routes/api/company/signup.php
+- **Tests**:
+  - **Unit**: Domain ValueObjects, Entities, Application UseCases, Infrastructure Repositories
+  - **Feature**: Presentation API Controllers
+
+また、静的解析（PHPStan Level 9）とコーディング標準チェック（PHP_CodeSniffer）を実行し、すべてのエラーを修正しました。
+
 ## Next Steps
 
 ### Immediate Tasks
-1. 企業のサインアップ機能を実装する
-   - 企業エンティティの定義
-   - サインアップユースケースの実装
-   - APIエンドポイントの作成
+1. ✅ 企業のサインアップ機能を実装する
+   - ✅ 企業エンティティの定義
+   - ✅ サインアップユースケースの実装
+   - ✅ APIエンドポイントの作成
 2. 企業のサインイン機能を実装する
    - 認証ロジックの実装
    - トークン発行の実装
