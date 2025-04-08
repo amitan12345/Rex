@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 // Include API route files
 require __DIR__ . '/api/ping.php';
 require __DIR__ . '/api/company/signup.php';
+require __DIR__ . '/api/company/signin.php';

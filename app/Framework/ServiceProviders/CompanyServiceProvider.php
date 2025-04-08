@@ -26,6 +26,12 @@ class CompanyServiceProvider extends ServiceProvider
                 $app->make(CompanyRepositoryInterface::class)
             );
         });
+
+        $this->app->bind(\App\Application\UseCases\CompanySignIn\CompanySignInUseCase::class, function ($app) {
+            return new \App\Application\UseCases\CompanySignIn\CompanySignInUseCase(
+                $app->make(CompanyRepositoryInterface::class)
+            );
+        });
     }
 
     /**

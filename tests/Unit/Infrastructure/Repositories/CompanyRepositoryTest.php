@@ -21,7 +21,7 @@ class CompanyRepositoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->repository = new CompanyRepository(new CompanyModel());
+        $this->repository = new CompanyRepository($this->app->make(CompanyModel::class));
     }
 
     /**
