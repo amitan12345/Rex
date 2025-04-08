@@ -10,6 +10,9 @@ Rexプロジェクトは現在、初期セットアップフェーズにあり�
 - 基本的なLaravel 12.0プロジェクト構造
 - Composer依存関係の設定
 - 基本的な設定ファイルの配置
+- API認証用のLaravel Sanctumの設定
+- 静的解析用のPHPStan（Level 9）の設定
+- コーディング標準チェック用のPHP_CodeSnifferの設定
 
 ### Documentation
 - メモリバンクがプロジェクト文書化で初期化
@@ -97,7 +100,7 @@ Rexプロジェクトは現在、初期セットアップフェーズにあり�
 ## Milestones
 
 ### Milestone 1: スプリント1の目標
-- [ ] composerで必要なライブラリを追加する
+- [x] composerで必要なライブラリを追加する
 - [ ] PHP、Nginx、DBのDockerコンテナを作成し、ping-pong APIを実行できる状態にする
 - [ ] 企業のサインアップ機能の実装
 - [ ] 企業のサインイン機能の実装

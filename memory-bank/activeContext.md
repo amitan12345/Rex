@@ -20,6 +20,17 @@ Rexプロジェクトは現在、初期セットアップフェーズにあり�
 
 プロジェクトはLaravel 12.0で初期化され、基本的なディレクトリ構造が整っています。メモリバンクが作成され、プロジェクトのアーキテクチャ、コンテキスト、進捗を文書化しています。
 
+スプリント1の一部として、以下のライブラリを追加しました：
+- **laravel/sanctum**: API認証用（`^4.0`）
+- **phpstan/phpstan**: 静的解析用（`^2.1`）
+- **squizlabs/php_codesniffer**: コーディング標準チェック用（`^3.12`）
+
+また、以下の設定ファイルを作成しました：
+- **phpstan.neon**: PHPStanの設定（Level 9）
+- **phpcs.xml**: PHP_CodeSnifferの設定（PSR-12ベース）
+
+Sanctumの設定ファイルとマイグレーションも公開しました。
+
 ## Next Steps
 
 ### Immediate Tasks
