@@ -60,6 +60,12 @@ class CompanySignInUseCaseTest extends TestCase
             ->with(Mockery::type(Email::class))
             ->andReturn($this->company);
 
+        // 認証トークン生成のモックを設定
+        $this->companyRepository->shouldReceive('generateAuthToken')
+            ->once()
+            ->with(Mockery::type(CompanyId::class))
+            ->andReturn('test-token');
+
         // 入力値を作成
         $input = new CompanySignInUseCaseInput(
             'test@example.com',
@@ -156,6 +162,12 @@ class CompanySignInUseCaseTest extends TestCase
                 $this->assertNotNull($company->rememberToken());
                 return $company;
             });
+
+        // 認証トークン生成のモックを設定
+        $this->companyRepository->shouldReceive('generateAuthToken')
+            ->once()
+            ->with(Mockery::type(CompanyId::class))
+            ->andReturn('test-token');
 
         // 入力値を作成
         $input = new CompanySignInUseCaseInput(

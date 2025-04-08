@@ -188,4 +188,36 @@ class CompanyRepositoryTest extends TestCase
             'id' => $model->id,
         ]);
     }
+
+    /**
+     * 認証トークンを生成できることをテスト
+     */
+    public function test_can_generate_auth_token(): void
+    {
+        // 企業モデルを作成
+        $model = CompanyModel::create([
+            'name' => 'Test Company',
+            'email' => 'test@example.com',
+            'password' => bcrypt('password123'),
+        ]);
+
+        // 認証トークンを生成
+        $token = $this->repository->generateAuthToken(new CompanyId($model->id));
+
+        // トークンが生成されたことを検証
+        $this->assertNotEmpty($token);
+    }
+
+    /**
+     * 存在しない企業IDで認証トークンを生成しようとすると例外がスローされることをテスト
+     */
+    public function test_generate_auth_token_throws_exception_for_nonexistent_id(): void
+    {
+        // 例外が発生することを期待
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('企業が見つかりません');
+
+        // 存在しないIDでトークンを生成
+        $this->repository->generateAuthToken(new CompanyId(999));
+    }
 }

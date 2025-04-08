@@ -51,7 +51,11 @@ class CompanySignInUseCase
         }
 
         // 認証トークンを生成
-        $token = $this->generateToken($company->id()->value());
+        $companyId = $company->id();
+        if ($companyId === null) {
+            throw new \RuntimeException('企業IDが設定されていません');
+        }
+        $token = $this->companyRepository->generateAuthToken($companyId);
 
         // 出力オブジェクトを返す
         return new CompanySignInUseCaseOutput(
@@ -60,24 +64,5 @@ class CompanySignInUseCase
             $company->email()->value(),
             $token,
         );
-    }
-
-    /**
-     * 認証トークンを生成する
-     *
-     * @param int $companyId
-     * @return string
-     * @throws \RuntimeException 企業が見つからない場合
-     */
-    private function generateToken(int $companyId): string
-    {
-        // Sanctumを使用してトークンを生成
-        $company = \App\Infrastructure\Models\CompanyModel::query()->find($companyId);
-
-        if ($company === null) {
-            throw new \RuntimeException('企業が見つかりません');
-        }
-
-        return $company->createToken('auth-token')->plainTextToken;
     }
 }

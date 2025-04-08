@@ -9,6 +9,7 @@ use App\Domain\ValueObjects\CompanyName;
 use App\Domain\ValueObjects\Email;
 use App\Domain\ValueObjects\Password;
 use App\Infrastructure\Models\CompanyModel;
+use RuntimeException;
 
 /**
  * 企業リポジトリの実装
@@ -139,5 +140,23 @@ class CompanyRepository implements CompanyRepositoryInterface
             Password::fromHash($model->password),
             $model->remember_token
         );
+    }
+
+    /**
+     * 認証トークンを生成する
+     *
+     * @param CompanyId $id
+     * @return string
+     * @throws RuntimeException 企業が見つからない場合
+     */
+    public function generateAuthToken(CompanyId $id): string
+    {
+        $company = $this->companyModel->find($id->value());
+
+        if ($company === null) {
+            throw new RuntimeException('企業が見つかりません');
+        }
+
+        return $company->createToken('auth-token')->plainTextToken;
     }
 }

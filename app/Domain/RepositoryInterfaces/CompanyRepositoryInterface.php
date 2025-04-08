@@ -50,4 +50,13 @@ interface CompanyRepositoryInterface
      * @return void
      */
     public function delete(CompanyId $id): void;
+
+    /**
+     * 認証トークンを生成する
+     *
+     * @param CompanyId $id
+     * @return string
+     * @throws \RuntimeException 企業が見つからない場合
+     */
+    public function generateAuthToken(CompanyId $id): string;
 }
