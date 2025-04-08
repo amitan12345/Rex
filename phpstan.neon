@@ -14,6 +14,6 @@ parameters:
         - '#Property .* has no type specified#'
         - '#Parameter .* of class .* constructor expects .* Mockery\\MockInterface given#'
         - '#Call to an undefined method Mockery\\ExpectationInterface\|Mockery\\HigherOrderMessage::once\(\)#'
-        - '#Return type of call to method .* contains unresolvable type#'
+        # - '#Return type of call to method .* contains unresolvable type#'
         - '#Cannot call method value\(\) on App\\Domain\\ValueObjects\\CompanyId\|null#'
         - '#Call to an undefined static method App\\Infrastructure\\Models\\CompanyModel::create\(\)#'
