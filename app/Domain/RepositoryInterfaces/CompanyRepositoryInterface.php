@@ -59,4 +59,13 @@ interface CompanyRepositoryInterface
      * @throws \RuntimeException 企業が見つからない場合
      */
     public function generateAuthToken(CompanyId $id): string;
+
+    /**
+     * 企業の認証トークンを無効化する
+     *
+     * @param CompanyId $id
+     * @return bool 成功した場合はtrue、失敗した場合はfalse
+     * @throws \RuntimeException 企業が見つからない場合
+     */
+    public function revokeAuthTokens(CompanyId $id): bool;
 }

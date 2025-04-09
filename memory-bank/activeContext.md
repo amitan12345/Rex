@@ -8,13 +8,13 @@ Rexプロジェクトは現在、初期セットアップフェーズにあり�
 2. ✅ PHP、Nginx、DBのDockerコンテナを作成し、ping-pong APIを実行できる状態にする
 3. ✅ 企業のサインアップ機能の実装
 4. ✅ 企業のサインイン機能の実装
-5. 企業のサインアウト機能の実装
+5. ✅ 企業のサインアウト機能の実装
 
 ### Current Priorities
 1. 企業関連の認証機能を実装する
    - ✅ サインアップ
    - ✅ サインイン
-   - サインアウト
+   - ✅ サインアウト
 2. ✅ クリーンアーキテクチャのディレクトリ構造を拡張する
 3. ✅ データベースマイグレーションを実装する
 
@@ -79,6 +79,21 @@ Docker環境を構築するために以下のファイルを作成しました�
   - **Unit**: Application UseCases
   - **Feature**: Presentation API Controllers
 
+企業のサインアウト機能を実装しました：
+- **Domain Layer**:
+  - **RepositoryInterfaces**: CompanyRepositoryInterfaceにrevokeAuthTokensメソッドを追加
+- **Application Layer**:
+  - **UseCases**: CompanySignOutUseCase, CompanySignOutUseCaseInput, CompanySignOutUseCaseOutput
+- **Infrastructure Layer**:
+  - **Repositories**: CompanyRepositoryにrevokeAuthTokensメソッドを実装
+- **Presentation Layer**:
+  - **API**: CompanySignOutController, CompanySignOutRequest, CompanySignOutResponder
+- **Routes**:
+  - **API**: routes/api/company/signout.php
+- **Tests**:
+  - **Unit**: Application UseCases
+  - **Feature**: Presentation API Controllers
+
 ## Next Steps
 
 ### Immediate Tasks
@@ -89,8 +104,8 @@ Docker環境を構築するために以下のファイルを作成しました�
 2. ✅ 企業のサインイン機能を実装する
    - ✅ 認証ロジックの実装
    - ✅ トークン発行の実装
-3. 企業のサインアウト機能を実装する
-   - トークン無効化の実装
+3. ✅ 企業のサインアウト機能を実装する
+   - ✅ トークン無効化の実装
 
 ### Upcoming Work
 1. 企業情報の閲覧・更新・退会機能の実装

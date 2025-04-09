@@ -159,4 +159,25 @@ class CompanyRepository implements CompanyRepositoryInterface
 
         return $company->createToken('auth-token')->plainTextToken;
     }
+
+    /**
+     * 企業の認証トークンを無効化する
+     *
+     * @param CompanyId $id
+     * @return bool
+     * @throws RuntimeException 企業が見つからない場合
+     */
+    public function revokeAuthTokens(CompanyId $id): bool
+    {
+        $company = $this->companyModel->find($id->value());
+
+        if ($company === null) {
+            throw new RuntimeException('企業が見つかりません');
+        }
+
+        // すべてのトークンを削除
+        $company->tokens()->delete();
+
+        return true;
+    }
 }

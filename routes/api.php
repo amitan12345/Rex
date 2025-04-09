@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/api/ping.php';
 require __DIR__ . '/api/company/signup.php';
 require __DIR__ . '/api/company/signin.php';
+require __DIR__ . '/api/company/signout.php';
